@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Virus Slayer Game</title>
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <div class="game-count-overlay">
+      <h1>3</h1>
+    </div>
+
+    <div class="game-container">
+
+      <div class="menu box">
+        <h2 class="title">Virus Slayer</h2>
+        <p class="text-action" onclick="restartGame()">Restart</p>
+        <p class="text-action" onclick="quit()">Quit</p>
+      </div>
+
+      <div class="main-game" id="test">
+        <canvas id="game"></canvas>
+
+        <!-- <div class="actions">
+          <div class="danger-zone"></div>
+          <div class="btn-actions">
+            <button data-code="d"><img src="images/d.png" alt="btn action"></button>
+            <button data-code="f"><img src="images/f.png" alt="btn action"></button>
+            <button data-code="j"><img src="images/j.png" alt="btn action"></button>
+            <button data-code="k"><img src="images/k.png" alt="btn action"></button>
+          </div>
+        </div> -->
+      </div>
+
+      <div class="board box">
+        <h2 class="title">Score Board</h2>
+        <p class="timer">Time : <span>1</span></p>
+        <p class="player-name">Player Name : <span>-</span></p>
+        <p class="score">Score : <span>0</span></p>
+        <p class="fail">Escaped Virus : <span>0</span></p>
+      </div>
+
+    </div>
+
+    <div id="pregame">
+      <img src="./images/logo.png" alt="" />
+      <h1>Virus Slayer Game</h1>
+      <p>1. Enter Your Username</p>
+      <p>2. Destroy The Oncoming Virus with (D,F,J,K) key</p>
+      <p>3. Reach Highscore</p>
+      <p>4. Enjoy The Game!</p>
+      <form action="" autocomplete="off" id="formPlay">
+        <input type="text" id="username" placeholder="Enter your username" />
+        <button type="submit" disabled="disabled">Play</button>
+      </form>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

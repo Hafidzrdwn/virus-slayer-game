@@ -1,0 +1,192 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+    margin-bottom: 12px;
+}
+
+button {
+    border: none;
+    padding: 12px 18px;
+    background-color: salmon;
+    font-size: 15px;
+    color: white;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: .3s;
+}
+button:hover {
+    background-color: rgb(221, 111, 99);
+}
+button:disabled {
+    background-color: rgb(255, 140, 127);
+    opacity: .8;
+    cursor: not-allowed;
+}
+
+input {
+    padding: 12px 15px;
+    width: 220px;
+    border-radius: 5px;
+    border: 1px solid #969696;
+    margin-top: 14px;
+}
+
+#pregame {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 1px solid #dedede;
+    min-height: 520px;
+    padding: 25px 50px;
+    border-radius: 9px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 99;
+}
+#pregame > img {
+    width: 150px;
+    display: block;
+    margin: 10px auto 20px;
+    animation: updown 3000ms infinite ease-in-out;
+}
+#pregame > h1 {
+    margin-bottom: 14px;
+}
+
+@keyframes updown {
+    0%{transform: translateY(10px);}
+    25%{transform: translateY(-10px);}
+    50%{transform: translateY(10px);}
+    75%{transform: translateY(-10px);}
+    100%{transform: translateY(10px);}
+}
+
+form > button {
+    display: block;
+    margin: 12px auto 0;
+    width: 100%;
+}
+
+#pregame > p {
+    margin: 5px 0;
+}
+
+.game-count-overlay {
+    z-index: 100;
+    background-color: rgba(0, 0, 0, .7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.game-count-overlay > h1 {
+    font-size: 72px;
+    color: white;
+    font-weight: bold;
+}
+.game-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 60vw;
+    height: 100vh;
+    padding: 30px 20px;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+}
+.game-container > .box {
+    padding: 30px 25px;
+    background-color: #1d1d1d;
+    color: white;
+    border-radius: 7px;
+    width: 225px;
+}
+h2.title {
+    margin-bottom: 25px;
+}
+
+.main-game {
+    width: 600px;
+    height: max-content;
+    position: relative;
+    display: inline-block;
+}
+/* .main-game > .actions {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0; 
+    width: 100%;
+}
+
+.main-game > .actions > .btn-actions
+{
+    display: flex;
+}
+.main-game > .actions > .btn-actions > button
+{
+    flex: 1;
+    border-radius: 0%;
+}
+.main-game > .actions > .btn-actions > button:nth-child(odd)
+{
+    background-color: rgb(248, 101, 85);
+}
+.main-game > .actions > .btn-actions > button:nth-child(odd):hover
+{
+    background-color: rgb(253, 78, 59);
+}
+.main-game > .actions > .btn-actions > button > img
+{
+    width: 32px;
+    pointer-events: none;
+}
+
+.main-game > .actions > .danger-zone {
+    background-color: rgba(255, 0, 0, 0.26);
+    height: 225px;
+    width: 100%;
+} */
+
+p.text-action:hover {
+    text-decoration: underline;
+    color: salmon;
+    cursor: pointer;
+}
+
+canvas#game {
+    background-color: #1d1d1d;
+    background-image: url(./images/bg.svg);
+    background-size: cover;
+}
+
+@media only screen and (max-width: 768px) {
+    .game-container {
+        width: 100vw;
+        padding: 0;
+    }
+    .game-container > .box {
+        width: 175px;
+        padding: 12px 22px;
+    }
+    .main-game {
+        width: 50%;
+    }
+  }
