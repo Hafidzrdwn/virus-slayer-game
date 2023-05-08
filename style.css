@@ -18,25 +18,26 @@ button {
     border-radius: 9px;
     cursor: pointer;
     transition: .3s;
+    pointer-events: all;
 }
 button:hover {
     background-color: rgb(221, 111, 99);
 }
-button:disabled {
+button.disabled {
+    pointer-events: none;
     background-color: rgb(255, 140, 127);
     opacity: .8;
-    cursor: not-allowed;
 }
 
 input {
     padding: 12px 15px;
-    width: 220px;
+    width: 100%;
     border-radius: 5px;
     border: 1px solid #969696;
     margin-top: 14px;
 }
 
-#pregame {
+.pregame {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -52,13 +53,13 @@ input {
     flex-direction: column;
     z-index: 99;
 }
-#pregame > img {
+.pregame > img {
     width: 150px;
     display: block;
     margin: 10px auto 20px;
     animation: updown 3000ms infinite ease-in-out;
 }
-#pregame > h1 {
+.pregame > h1 {
     margin-bottom: 14px;
 }
 
@@ -70,13 +71,13 @@ input {
     100%{transform: translateY(10px);}
 }
 
-form > button {
+.btn-play {
     display: block;
     margin: 12px auto 0;
     width: 100%;
 }
 
-#pregame > p {
+.pregame > p {
     margin: 5px 0;
 }
 
@@ -103,9 +104,9 @@ form > button {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 60vw;
+    width: 1050px;
     height: 100vh;
-    padding: 30px 20px;
+    padding: 0 30px;
     display: none;
     justify-content: space-between;
     align-items: center;
@@ -122,49 +123,6 @@ h2.title {
     margin-bottom: 25px;
 }
 
-.main-game {
-    width: 600px;
-    height: max-content;
-    position: relative;
-    display: inline-block;
-}
-/* .main-game > .actions {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    bottom: 0; 
-    width: 100%;
-}
-
-.main-game > .actions > .btn-actions
-{
-    display: flex;
-}
-.main-game > .actions > .btn-actions > button
-{
-    flex: 1;
-    border-radius: 0%;
-}
-.main-game > .actions > .btn-actions > button:nth-child(odd)
-{
-    background-color: rgb(248, 101, 85);
-}
-.main-game > .actions > .btn-actions > button:nth-child(odd):hover
-{
-    background-color: rgb(253, 78, 59);
-}
-.main-game > .actions > .btn-actions > button > img
-{
-    width: 32px;
-    pointer-events: none;
-}
-
-.main-game > .actions > .danger-zone {
-    background-color: rgba(255, 0, 0, 0.26);
-    height: 225px;
-    width: 100%;
-} */
-
 p.text-action:hover {
     text-decoration: underline;
     color: salmon;
@@ -172,9 +130,7 @@ p.text-action:hover {
 }
 
 canvas#game {
-    background-color: #1d1d1d;
-    background-image: url(./images/bg.svg);
-    background-size: cover;
+    background-color: #181818;
 }
 
 @media only screen and (max-width: 768px) {

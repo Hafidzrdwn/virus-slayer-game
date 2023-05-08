@@ -9,20 +9,18 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-
     <div class="game-count-overlay">
       <h1>3</h1>
     </div>
 
     <div class="game-container">
-
       <div class="menu box">
         <h2 class="title">Virus Slayer</h2>
         <p class="text-action" onclick="restartGame()">Restart</p>
         <p class="text-action" onclick="quit()">Quit</p>
       </div>
 
-      <div class="main-game" id="test">
+      <div class="main-game">
         <canvas id="game"></canvas>
 
         <!-- <div class="actions">
@@ -38,25 +36,27 @@
 
       <div class="board box">
         <h2 class="title">Score Board</h2>
-        <p class="timer">Time : <span>1</span></p>
+        <p class="timer">Time : <span>0</span></p>
         <p class="player-name">Player Name : <span>-</span></p>
         <p class="score">Score : <span>0</span></p>
         <p class="fail">Escaped Virus : <span>0</span></p>
       </div>
-
     </div>
 
-    <div id="pregame">
+    <div class="pregame">
       <img src="./images/logo.png" alt="" />
       <h1>Virus Slayer Game</h1>
       <p>1. Enter Your Username</p>
       <p>2. Destroy The Oncoming Virus with (D,F,J,K) key</p>
       <p>3. Reach Highscore</p>
       <p>4. Enjoy The Game!</p>
-      <form action="" autocomplete="off" id="formPlay">
-        <input type="text" id="username" placeholder="Enter your username" />
-        <button type="submit" disabled="disabled">Play</button>
-      </form>
+      <input
+        type="text"
+        class="input-username"
+        placeholder="Enter your username"
+        autocomplete="off"
+      />
+      <button type="button" class="btn-play disabled">Play</button>
     </div>
 
     <script src="index.js"></script>
