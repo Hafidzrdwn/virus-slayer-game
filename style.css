@@ -5,14 +5,23 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
 p {
     margin-bottom: 12px;
+    color: white;
 }
 
 button {
     border: none;
     padding: 12px 18px;
-    background-color: salmon;
+    background-color: #ed556b;
     font-size: 15px;
     color: white;
     border-radius: 9px;
@@ -21,46 +30,67 @@ button {
     pointer-events: all;
 }
 button:hover {
-    background-color: rgb(221, 111, 99);
+    background-color: #d34e62;
 }
-button.disabled {
-    pointer-events: none;
-    background-color: rgb(255, 140, 127);
-    opacity: .8;
+button:disabled {
+    cursor: not-allowed;
+    background-color: #e75c71;
+    opacity: .6;
 }
-
+#form-play {
+    width: 80%;
+    margin: auto;
+}
 input {
+    outline: none;
+    border: none;
     padding: 12px 15px;
     width: 100%;
-    border-radius: 5px;
-    border: 1px solid #969696;
+    border-radius: 7px;
     margin-top: 14px;
+    font-size: 17px;
+}
+
+.d-none {
+    display: none !important;
 }
 
 .pregame {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    border: 1px solid #dedede;
-    min-height: 520px;
-    padding: 25px 50px;
-    border-radius: 9px;
-    text-align: center;
+    width: 550px;
+    background-color: #181818;
+    border-radius: 18px;
+    padding: 40px;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    gap: 10px;
     z-index: 99;
+    transition: all .4s;
 }
-.pregame > img {
+.pregame > .play-box,
+.pregame>.instruction-box {
+    flex: 2;
+}
+.pregame > .play-box > img {
     width: 150px;
     display: block;
-    margin: 10px auto 20px;
+    margin: 10px auto 30px;
     animation: updown 3000ms infinite ease-in-out;
 }
-.pregame > h1 {
+.pregame > .play-box > h1 ,
+.pregame>.instruction-box > h1{
     margin-bottom: 14px;
+    color: white;
+    text-align: center;
+    font-size: 26px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.pregame > .instruction-box > h1 {
+    text-align: start !important;
+    margin-bottom: 30px;
+    color: #ed556b;
 }
 
 @keyframes updown {
@@ -71,41 +101,64 @@ input {
     100%{transform: translateY(10px);}
 }
 
-.btn-play {
-    display: block;
-    margin: 12px auto 0;
+.buttons {
+    display: grid;
+    margin-top: 13px;
+    grid-template-columns: 2fr .5fr;
+    column-gap: 10px;
+}
+
+.btn-instruction {
+    background: none;
+    border: 1px solid #ed556b;
+}
+
+.pregame > .instruction-box > p {
     width: 100%;
+    font-size: 16px;
+    line-height: 25px;
 }
 
-.pregame > p {
-    margin: 5px 0;
+.copyright {
+    font-size: 14px;
+    color: #bababa;
+    text-align: center;
+    margin-top: 18px;
+}
+.copyright > a {
+    color: #ed556b;
 }
 
-.game-count-overlay {
-    z-index: 100;
-    background-color: rgba(0, 0, 0, .7);
-    position: absolute;
+.game-count-overlay,
+.gameover-wrapper,
+.pause-wrapper,
+.leaderboard-wrapper {
+    position: fixed;
     top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, .8);
     display: none;
     justify-content: center;
     align-items: center;
-    text-align: center;
 }
+.game-count-overlay {
+    z-index: 100;
+}
+.leaderboard-wrapper {
+    z-index: 10000;
+}
+
 .game-count-overlay > h1 {
     font-size: 72px;
     color: white;
     font-weight: bold;
 }
 .game-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
     width: 1050px;
-    height: 100vh;
+    height: auto;
     padding: 0 30px;
     display: none;
     justify-content: space-between;
@@ -120,29 +173,143 @@ input {
     width: 225px;
 }
 h2.title {
+    margin-top: 10px;
     margin-bottom: 25px;
 }
 
 p.text-action:hover {
     text-decoration: underline;
-    color: salmon;
+    color: #ed556b;
     cursor: pointer;
+}
+
+.menu {
+    text-align: center;
+}
+
+.gameover , .pause-screen, .leaderboard-screen{
+    z-index: 2;
+    background-color: #181818;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 35px 0;
+    width: 350px;
+    height: auto;
+    border-radius: 8px;
+    text-align: center;
+}
+.gameover > h1 {
+    margin-bottom: 22px;
+}
+.buttons-gameover {
+    display: flex;
+    gap: 12px;
+}
+
+.pause-screen > p {
+    margin: 22px 0;
+}
+
+.btn-leaderboard {
+    margin: 12px 0;
+    background-color: #333;
+    padding: 15px;
+    transition: .3s;
+}
+
+.buttons-pause>.btn-restart {
+    margin-right: 8px;
+    background-color: #333;
+}
+
+.btn-leaderboard:hover, .buttons-pause>.btn-restart:hover {
+    background-color: #1d1d1d;
+}
+
+.leaderboard-screen {
+    width: 550px;
+    padding: 35px 25px;
+}
+.leaderboard-screen > h1 {
+    margin-bottom: 25px;
+}
+.leaderboard-screen > .leaderboard-table {
+    background-color: #1d1d1d;
+    border-radius: 15px;
+    width: 100%;
+    padding: 25px 12px;
+    margin-bottom: 20px;
+}
+.leaderboard-screen > .leaderboard-table th {
+    font-size: 17px;
+    text-transform: uppercase;
+    padding: 0 15px 15px;
+}
+.leaderboard-screen > .leaderboard-table td {
+    font-size: 17px;
+    padding-top: 18px;
 }
 
 canvas#game {
     background-color: #181818;
+    width: 100%;
+}
+
+.main-game {
+    position: relative;
+}
+
+.shadow-buttons {
+    position: absolute;
+    bottom: 0;
+    background-color: none;
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+.shadow-buttons > button {
+    width: 120px;
+    height: 90px;
+    background: none;
+    opacity: 0;
+    border-radius: 0;
 }
 
 @media only screen and (max-width: 768px) {
+    .pregame {
+        flex-direction: column;
+        min-height: 100vh;
+        gap: 50px;
+        border-radius: 0;
+        width: 100%;
+    }
+    .pregame > .play-box {
+        width: 100%;
+    }
+    #form-play {
+        width: 100%;
+    }
+
     .game-container {
-        width: 100vw;
+        width: 100%;
         padding: 0;
+        flex-direction: column;
     }
     .game-container > .box {
-        width: 175px;
+        width: 100%;
         padding: 12px 22px;
+        border-radius: 0 !important;
     }
     .main-game {
-        width: 50%;
+        width: 100%;
+    }
+    .pause-screen {
+        padding: 35px;
+    }
+    .leaderboard-screen {
+        height: 100%;
     }
   }

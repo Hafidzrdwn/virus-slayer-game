@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Virus Slayer Game</title>
-    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="./images/logo_game.png"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -15,28 +19,27 @@
 
     <div class="game-container">
       <div class="menu box">
+        <img src="images/logo_game.png" width="100" alt="" />
         <h2 class="title">Virus Slayer</h2>
-        <p class="text-action" onclick="restartGame()">Restart</p>
-        <p class="text-action" onclick="quit()">Quit</p>
+        <p class="text-action btn-leaderboard">Leaderboard</p>
+        <p class="text-action btn-pause">Pause / ESC</p>
+        <p class="text-action btn-restart">Restart</p>
+        <p class="text-action btn-quit">Quit</p>
       </div>
 
       <div class="main-game">
+        <div class="shadow-buttons">
+          <button data-key="d">D</button>
+          <button data-key="f">F</button>
+          <button data-key="j">J</button>
+          <button data-key="k">K</button>
+        </div>
         <canvas id="game"></canvas>
-
-        <!-- <div class="actions">
-          <div class="danger-zone"></div>
-          <div class="btn-actions">
-            <button data-code="d"><img src="images/d.png" alt="btn action"></button>
-            <button data-code="f"><img src="images/f.png" alt="btn action"></button>
-            <button data-code="j"><img src="images/j.png" alt="btn action"></button>
-            <button data-code="k"><img src="images/k.png" alt="btn action"></button>
-          </div>
-        </div> -->
       </div>
 
       <div class="board box">
         <h2 class="title">Score Board</h2>
-        <p class="timer">Time : <span>0</span></p>
+        <p class="timer">Time : <span>00:00</span></p>
         <p class="player-name">Player Name : <span>-</span></p>
         <p class="score">Score : <span>0</span></p>
         <p class="fail">Escaped Virus : <span>0</span></p>
@@ -44,21 +47,96 @@
     </div>
 
     <div class="pregame">
-      <img src="./images/logo.png" alt="" />
-      <h1>Virus Slayer Game</h1>
-      <p>1. Enter Your Username</p>
-      <p>2. Destroy The Oncoming Virus with (D,F,J,K) key</p>
-      <p>3. Reach Highscore</p>
-      <p>4. Enjoy The Game!</p>
-      <input
-        type="text"
-        class="input-username"
-        placeholder="Enter your username"
-        autocomplete="off"
-      />
-      <button type="button" class="btn-play disabled">Play</button>
+      <div class="play-box">
+        <img src="./images/logo_game.png" alt="" />
+        <h1>Virus Slayer🦠</h1>
+        <form id="form-play">
+          <input
+            type="text"
+            class="input-username"
+            placeholder="Enter your username"
+            autocomplete="off"
+          />
+          <div class="buttons">
+            <button type="submit" class="btn-play" disabled>
+              <b
+                >Start &nbsp;<i class="fas fa-play" style="font-size: 13px"></i
+              ></b>
+            </button>
+            <button type="button" class="btn-instruction">
+              <i class="fas fa-info-circle" style="font-size: 20px"></i>
+            </button>
+          </div>
+        </form>
+        <p class="copyright">
+          Made by
+          <a href="https://instagram.com/hafidzrdwn" target="_blank">
+            @hafidzrdwn
+          </a>
+        </p>
+      </div>
+      <div class="instruction-box d-none">
+        <h1>Game Instruction</h1>
+        <p>1. Enter Your Username</p>
+        <p>2. Destroy The Oncoming Virus with (D,F,J,K) key.</p>
+        <p>3. Pause the game with ESC key or pause button.</p>
+        <p>
+          4. The number and speed of viruses will increase as your score
+          increases.
+        </p>
+        <p>5. Game Over if the virus that passes reaches 5 viruses.</p>
+        <p>6. Reach Highscore and Enjoy The Game!</p>
+      </div>
     </div>
 
+    <div class="gameover-wrapper">
+      <div class="gameover">
+        <h1>Game Over.</h1>
+        <p class="player-name-final">Player Name : <span>-</span></p>
+        <p class="timer-final">Duration : <span>00:00</span></p>
+        <p class="score-final">Final Score : <span>0</span></p>
+
+        <button class="btn-leaderboard">Highscore Leaderboard</button>
+        <div class="buttons-gameover">
+          <button class="btn-restart">Restart</button>
+          <button class="btn-quit">Quit</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pause-wrapper">
+      <div class="pause-screen">
+        <h1>Game paused.</h1>
+        <p>Press ESC again to continue or click the continue button👇</p>
+        <div class="buttons-pause">
+          <button class="btn-restart">Restart</button>
+          <button class="btn-continue">Continue</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="leaderboard-wrapper">
+      <div class="leaderboard-screen">
+        <h1>Highscore Leaderboard</h1>
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Score</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button class="btn-close">Close</button>
+      </div>
+    </div>
+
+    <script
+      src="https://kit.fontawesome.com/2e160f1ac0.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="index.js"></script>
   </body>
 </html>
